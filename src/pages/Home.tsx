@@ -1,15 +1,29 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import MovieCard from "../components/MovieCard";
+import { searchMovies, getPopularMovies } from "../services/api";
 import "../css/Home.css";
-
-const movies = [
-  { id: 1, title: "The Matrix", release_date: "1998" },
-  { id: 2, title: "John Wick", release_date: "2020" },
-  { id: 3, title: "Malena", release_date: "1999" },
-];
 
 function Home() {
   const [searchQuery, setSearchQuery] = useState<string>("");
+  const [movies, setMovies] = useState<string[]>([]);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<string>("");
+
+  useEffect(() => {
+    const loadPopularMovies = async () => {
+      try {
+        const popularMovies = await getPopularMovies();
+        setMovies(popularMovies);
+        console.log(movies);
+      } catch (err) {
+        console.log(err);
+        setError("failed to load movies..");
+      } finally {
+        setLoading(false);
+      }
+    };
+    loadPopularMovies();
+  }, []);
 
   const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -37,6 +51,7 @@ function Home() {
             movie.title.toLowerCase().startsWith(searchQuery) && (
               <MovieCard
                 key={movie.id}
+                poster_path={movie.poster_path}
                 title={movie.title}
                 release_date={movie.release_date}
               />
