@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import MovieCard from "../components/MovieCard";
+import "../css/Home.css";
 
 const movies = [
   { id: 1, title: "The Matrix", release_date: "1998" },

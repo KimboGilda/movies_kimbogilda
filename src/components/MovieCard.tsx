@@ -1,3 +1,5 @@
+import "../css/MovieCard.css";
+
 export interface Movie {
   id?: number;
   title: string;
