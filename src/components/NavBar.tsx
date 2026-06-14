@@ -1,15 +1,24 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import "../css/NavBar.css";
 
 function NavBar() {
+  const location = useLocation();
+
   return (
     <nav className="navbar">
       <div className="nav-brand">
-        <Link to="/">Movie App</Link>
+        <Link to="/">🎬 Movie App</Link>
       </div>
       <div className="navbar-links">
-        <Link to="/">Home</Link>
-        <Link to="/favorites">Favorites</Link>
+        <Link to="/" className={location.pathname === "/" ? "active" : ""}>
+          Home
+        </Link>
+        <Link
+          to="/favorites"
+          className={location.pathname === "/favorites" ? "active" : ""}
+        >
+          Favorites
+        </Link>
       </div>
     </nav>
   );

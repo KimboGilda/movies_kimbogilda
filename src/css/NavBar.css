@@ -1,15 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+
 .navbar {
-  background-color: #000000;
-  padding: 1rem 2rem;
+  background-color: #0f0f0f;
+  border-bottom: 1px solid #1f1f1f;
+  padding: 1rem 2.5rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(10px);
+  font-family: 'Inter', sans-serif;
 }
 
-.navbar-brand {
-  font-size: 1.5rem;
-  font-weight: bold;
+.nav-brand a {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #ffffff;
+  letter-spacing: -0.3px;
+  text-decoration: none;
 }
 
 .navbar-links {
@@ -17,31 +27,37 @@
   gap: 2rem;
 }
 
-.nav-link {
-  font-size: 1rem;
-  padding: 0.5rem 1rem;
-  border-radius: 4px;
-  transition: background-color 0.2s;
+.navbar-links a {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #888888;
+  text-decoration: none;
+  transition: color 0.2s ease;
+  letter-spacing: 0.2px;
 }
 
-.nav-link:hover {
-  background-color: rgba(255, 255, 255, 0.1);
+.navbar-links a:hover {
+  color: #ffffff;
+}
+
+.navbar-links a.active {
+  color: #4819c8;
 }
 
 @media (max-width: 768px) {
   .navbar {
-    padding: 1rem;
+    padding: 1rem 1.25rem;
   }
 
-  .navbar-brand {
-    font-size: 1.2rem;
+  .nav-brand a {
+    font-size: 1.1rem;
   }
 
   .navbar-links {
-    gap: 1rem;
+    gap: 1.25rem;
   }
 
-  .nav-link {
-    padding: 0.5rem;
+  .navbar-links a {
+    font-size: 0.85rem;
   }
 }
